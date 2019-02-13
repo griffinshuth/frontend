@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StoryCardCon = styled.div`
-  width: 30%;
+  width: 25%;
   max-width: 400px;
   padding: 20px;
   text-align: left;

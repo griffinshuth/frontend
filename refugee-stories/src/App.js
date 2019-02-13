@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
-
 import './App.css';
-import MenuBar from './components/MenuBar';
-import StoryList from './components/StoryList';
 
+import StoryList from './components/StoryList';
+import Header from './components/Header';
 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="header">
-          <MenuBar />
-        </header>
+        <Header />
         <StoryList />
       </div>
     );

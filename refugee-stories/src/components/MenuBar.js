@@ -1,14 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const MenuBarCon = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  color: #ffffff;
+  text-transform: uppercase;
+`
+const MenuItem = styled.a`
+  padding-left: 30px;
+`
 
 const MenuBar = props => {
   return (
-    <div className="menu-bar">
-      <div>Home</div>
-      <div>About</div>
-      <div>Contact</div>
-      <div>Submit Your Story</div>
+    <MenuBarCon>
+      <MenuItem>Home</MenuItem>
+      <MenuItem>About</MenuItem>
+      <MenuItem>Contact</MenuItem>
+      <MenuItem>Submit Your Story</MenuItem>
 
-    </div>
+    </MenuBarCon>
   )
 }
 
