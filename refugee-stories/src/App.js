@@ -3,7 +3,7 @@ import './App.css';
 
 import StoryList from './components/StoryList';
 import Header from './components/Header';
-
+import AddStoryForm from './components/AddStoryForm';
 
 class App extends Component {
   render() {
@@ -11,6 +11,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <StoryList />
+        <AddStoryForm />
       </div>
     );
   }
