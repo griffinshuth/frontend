@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Route } from 'react-router-dom';
 
 import StoryList from './components/StoryList';
-import Header from './components/Header';
 import AddStoryForm from './components/AddStoryForm';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <StoryList />
+        <Route path="/" component={StoryList} />
         <AddStoryForm />
       </div>
     );

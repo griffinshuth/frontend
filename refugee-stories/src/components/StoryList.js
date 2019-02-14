@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import StoryCard from './StoryCard';
+import Header from './Header';
 
 const StoryListCon = styled.div`
   display: flex;
@@ -15,11 +16,15 @@ const StoryListCon = styled.div`
 
 const StoryList = props => {
   return (
-    <StoryListCon className="menu-bar">
+    <div>
+      <Header title="Our Stories"/>
+      <StoryListCon className="menu-bar">
       <StoryCard />
       <StoryCard />
       <StoryCard />
     </StoryListCon>
+    </div>
+    
   )
 }
 

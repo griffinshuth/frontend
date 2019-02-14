@@ -25,14 +25,15 @@ const HeaderTitle = styled.div`
 `
 
 class Header extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
     return (
       
         <HeaderCon>
           <MenuBar />
-          <HeaderTitle>
-            Our Stories
-          </HeaderTitle>
+          <HeaderTitle>{this.props.title}</HeaderTitle>
         </HeaderCon>
        
     );
