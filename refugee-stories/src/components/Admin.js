@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 
 import Header from './Header';
-import StoryCard from './StoryCard';
+import StoryListPending from './StoryListPending';
 
 export default class Admin extends Component {
   render(){
     return (
       <div>
         <Header title="Pending Stories" />
-        <StoryCard />
-        <StoryCard />
-        <StoryCard />
+        <StoryListPending />
       </div>
       
     )

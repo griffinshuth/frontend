@@ -11,15 +11,28 @@ const MenuBarCon = styled.div`
 `
 const MenuItem = styled.a`
   padding-left: 30px;
+  text-decoration: none;
+  color: #ffffff;
 `
 
 const MenuBar = props => {
   return (
     <MenuBarCon>
-      <MenuItem>Home</MenuItem>
-      <MenuItem>About</MenuItem>
-      <MenuItem>Contact</MenuItem>
-      <MenuItem>Submit Your Story</MenuItem>
+      <NavLink activeClassName="active-page" to={'/'}>
+        <MenuItem>Home</MenuItem>
+      </NavLink>
+      {/* <NavLink activeClassName="active-page" to={'/'}>
+        <MenuItem>About</MenuItem>
+      </NavLink>
+      <NavLink activeClassName="active-page" to={'/'}>
+        <MenuItem>Contact</MenuItem>
+      </NavLink> */}
+      <NavLink activeClassName="active-page" to={'/submit'}>
+        <MenuItem>Submit Your Story</MenuItem>
+      </NavLink>
+      <NavLink activeClassName="active-page" to={'/admin'}>
+        <MenuItem>Admin</MenuItem>
+      </NavLink>
     </MenuBarCon>
   )
 }

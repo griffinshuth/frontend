@@ -30,12 +30,10 @@ class Header extends Component {
   }
   render() {
     return (
-      
-        <HeaderCon>
-          <MenuBar />
-          <HeaderTitle>{this.props.title}</HeaderTitle>
-        </HeaderCon>
-       
+      <HeaderCon>
+        <MenuBar />
+        <HeaderTitle>{this.props.title}</HeaderTitle>
+      </HeaderCon>
     );
   }
 }

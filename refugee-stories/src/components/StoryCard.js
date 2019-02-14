@@ -42,7 +42,7 @@ const Story = styled.div`
   margin: 20px auto 10px auto;
 `
 
-const StoryCard = props => {
+const StoryCard = () => {
   return (
     <StoryCardCon>
       <ImgCon>
