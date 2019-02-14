@@ -8,6 +8,9 @@ const StoryListCon = styled.div`
   flex-flow: row wrap;
   justify-content: space-evenly;
   margin-top: 100px;
+  background: #ffffff;
+  margin: 100px 2%;
+  padding: 100px 2%;
 `
 
 const StoryList = props => {

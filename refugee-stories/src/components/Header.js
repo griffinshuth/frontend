@@ -7,7 +7,7 @@ import headerImg from '../images/header.jpg';
 const HeaderCon = styled.header`
   background: url(${headerImg}) bottom center;
   background-size: 100%;
-  min-height: 400px;
+  min-height: 500px;
 `
 
 const HeaderTitle = styled.div`
@@ -15,7 +15,7 @@ const HeaderTitle = styled.div`
   max-width: 400px;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 100px 20px;
+  padding: 150px 20px;
   background: rgba(0,0,0,0.3);
   color: #ffffff;
   font-weight: bold;

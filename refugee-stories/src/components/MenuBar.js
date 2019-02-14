@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const MenuBarCon = styled.div`
   display: flex;
@@ -19,7 +20,6 @@ const MenuBar = props => {
       <MenuItem>About</MenuItem>
       <MenuItem>Contact</MenuItem>
       <MenuItem>Submit Your Story</MenuItem>
-
     </MenuBarCon>
   )
 }
