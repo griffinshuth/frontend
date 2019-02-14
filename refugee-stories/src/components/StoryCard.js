@@ -39,7 +39,7 @@ const Country = styled.div`
 const Story = styled.div`
   letter-spacing: 1px;
   line-height: 1.5;
-  margin: 10px auto;
+  margin: 20px auto 10px auto;
 `
 
 const StoryCard = props => {
