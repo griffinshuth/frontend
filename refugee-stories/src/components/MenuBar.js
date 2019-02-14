@@ -15,7 +15,7 @@ const MenuItem = styled.a`
   color: #ffffff;
 `
 
-const MenuBar = props => {
+const MenuBar = () => {
   return (
     <MenuBarCon>
       <NavLink activeClassName="active-page" to={'/'}>
