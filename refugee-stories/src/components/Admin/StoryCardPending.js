@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import refugeeImg from '../images/refugee-photo.jpg';
+import refugeeImg from '../../images/refugee-photo.jpg';
 
 const PendingCardCon = styled.div`
   width: 100%;

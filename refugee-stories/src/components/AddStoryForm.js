@@ -31,8 +31,30 @@ const FormTitle = styled.h2`
 `
 
 export default class AddStoryForm extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    this.state = {
+      refugee: {
+        name: '',
+        age: '',
+        url: '',
+        story: ''
+      }
+    }
+  }
+
+  onInputChange = event => {
+    this.setState({
+      refugee: {
+        ...this.state.refugee,
+        [event.target.name]: event.target.value
+      }
+    })
+  }
+
+  onStorySubmit = event => {
+    event.preventDefault();
+    console.log(this.state.refugee);
   }
 
   render(){
@@ -42,11 +64,11 @@ export default class AddStoryForm extends Component {
         <FormCon>
           <FormTitle>Share your story with the world</FormTitle>
           <Form>
-            <input type="text" name="name" placeholder="Name" />
-            <input type="number" name="age" placeholder="Age" />
-            <input type="text" name="imgUrl" placeholder="Image URL" />
-            <textarea name="story" rows="10" cols="30" placeholder="Your story starts here..."></textarea>
-            <button type="submit">Submit</button>
+            <input type="text" name="name" placeholder="Name" onChange={this.onInputChange} />
+            <input type="number" name="age" placeholder="Age" onChange={this.onInputChange} />
+            <input type="text" name="imgUrl" placeholder="Image URL" onChange={this.onInputChange} />
+            <textarea name="story" rows="10" cols="30" placeholder="Your story starts here..." onChange={this.onInputChange}></textarea>
+            <button type="submit" onClick={this.onStorySubmit}>Submit</button>
           </Form>
         </FormCon>
         

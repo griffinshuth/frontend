@@ -9,33 +9,24 @@ const MenuBarCon = styled.div`
   color: #ffffff;
   text-transform: uppercase;
 `
-const MenuItem = styled.a`
-  padding-left: 30px;
-  text-decoration: none;
-  color: #ffffff;
-`
+// const MenuItem = styled.a`
+//   padding-left: 30px;
+//   text-decoration: none;
+//   color: #ffffff;
+// `
 
 const MenuBar = () => {
   return (
     <MenuBarCon>
-      <NavLink activeClassName="active-page" to={'/'}>
-        <MenuItem>Home</MenuItem>
+      <NavLink activeClassName="active-page" className="menu-item" to={'/'}>
+        Stories
       </NavLink>
-      {/* <NavLink activeClassName="active-page" to={'/'}>
-        <MenuItem>About</MenuItem>
+      <NavLink activeClassName="active-page" className="menu-item" to={'/submit'}>
+        Submit Your Story
       </NavLink>
-      <NavLink activeClassName="active-page" to={'/'}>
-        <MenuItem>Contact</MenuItem>
-      </NavLink> */}
-      <NavLink activeClassName="active-page" to={'/submit'}>
-        <MenuItem>Submit Your Story</MenuItem>
+      <NavLink activeClassName="active-page" className="menu-item" to={'/admin'}>
+        Admin
       </NavLink>
-      <NavLink activeClassName="active-page" to={'/admin'}>
-        <MenuItem>Admin</MenuItem>
-      </NavLink>
-      {/* <NavLink activeClassName="active-page" to={'/admin/login'}>
-        <MenuItem>Login</MenuItem>
-      </NavLink> */}
     </MenuBarCon>
   )
 }

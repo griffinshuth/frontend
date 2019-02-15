@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Authenticate from './Authentication/Authenticate';
+import Authenticate from '../Authentication/Authenticate';
 
 export default class Admin extends Component {
   render(){

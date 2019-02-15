@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import StoryCardPending from './StoryCardPending';
-import Header from './Header';
+import Header from '../Header';
 
 const StoryListCon = styled.div`
   display: flex;

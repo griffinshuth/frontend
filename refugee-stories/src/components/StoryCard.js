@@ -20,16 +20,11 @@ const Img = styled.img`
   max-width: 100%;
 `
 
-const Title = styled.div`
+const Name = styled.div`
   text-transform: uppercase;
   font-size: 2rem;
   letter-spacing: 2px;
   margin: 10px auto;
-`
-
-const Name = styled.div`
-  text-transform: uppercase;
-  font-size: 1.5rem;
 `
 
 const Country = styled.div`
@@ -42,17 +37,16 @@ const Story = styled.div`
   margin: 20px auto 10px auto;
 `
 
-const StoryCard = () => {
+const StoryCard = (props) => {
   return (
     <StoryCardCon>
       <ImgCon>
-        <Img src={refugeeImg} alt="" />
+        <Img src={props.imgUrl} alt="" />
       </ImgCon>
-      <Title>Title</Title>
-      <Name>By Refugee Name</Name>
-      <div>Age</div>
-      <Country>Country of Origin</Country>
-      <Story>I have reset the sensors to scan for frequencies outside the usual range. By emitting harmonic vibrations to shatter the lattices. We will monitor and adjust the frequency of the resonators. He has this ability of instantly interpreting and extrapolating any verbal communication he hears. It may be due to the envelope over the structure, causing hydrogen-carbon helix patterns throughout. I'm comparing the molecular integrity of that bubble against our phasers.</Story>
+      <Name>{props.name}</Name>
+      <div>{props.age}</div>
+      <Country>{props.country}</Country>
+      <Story>{props.story}</Story>
     </StoryCardCon>
   )
 }

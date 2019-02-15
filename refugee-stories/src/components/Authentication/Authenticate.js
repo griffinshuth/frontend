@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import Admin from '../Admin';
+import Admin from '../Admin/Admin';
 import Header from '../Header';
-import StoryListPending from '../StoryListPending';
-import Login from '../Login';
+import StoryListPending from '../Admin/StoryListPending';
+import Login from '../Admin/Login';
 
 const Authenticate = Admin => {
   return class extends Component {
