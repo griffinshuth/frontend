@@ -33,6 +33,9 @@ const MenuBar = () => {
       <NavLink activeClassName="active-page" to={'/admin'}>
         <MenuItem>Admin</MenuItem>
       </NavLink>
+      {/* <NavLink activeClassName="active-page" to={'/admin/login'}>
+        <MenuItem>Login</MenuItem>
+      </NavLink> */}
     </MenuBarCon>
   )
 }

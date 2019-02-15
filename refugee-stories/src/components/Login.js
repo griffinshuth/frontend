@@ -33,21 +33,38 @@ const FormTitle = styled.h2`
   letter-spacing: 2px;
 `
 
-export default class AddStoryForm extends Component {
-  constructor(){
-    super();
+export default class Login extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      usernameInput: '',
+    }
   }
+
+  onInputChange = event => {
+    this.setState({usernameInput: event.target.value})
+  }
+
+  onLogin = event => {
+    localStorage.setItem('user', this.state.usernameInput);
+    // window.onbeforeunload();
+  }
+
+  // onLogout = event => {
+  //   event.preventDefault();
+  //   localStorage.clear();
+  // }
 
   render(){
     return (
       <FormComponent>
         <FormCon>
-        <FormTitle>Refugee Stories Admin Login</FormTitle>
-          <Form>
-            <input type="text" name="name" placeholder="Name" />
-            <input type="password" name="password" placeholder="Password" />
-            <button type="submit">Login</button>
-          </Form>
+          <FormTitle>Refugee Stories Admin Login</FormTitle>
+            <Form>
+              <input type="text" name="name" placeholder="Name" onChange={this.onInputChange} required/>
+              <input type="password" name="password" placeholder="Password" />
+              <button onClick={this.onLogin}>Login</button>
+            </Form>
           <Link to='/'>Go back to Refugee Stories</Link>
         </FormCon>
           
