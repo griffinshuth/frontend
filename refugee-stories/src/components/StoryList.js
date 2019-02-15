@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import StoryCard from './StoryCard';
 import Header from './Header';
-import dummyData from '../dummyData.js';
+// import dummyData from '../dummyData.js';
 
 const StoryListCon = styled.div`
   display: flex;
@@ -17,27 +17,30 @@ const StoryListCon = styled.div`
 
 
 export default class StoryList extends React.Component {
-  constructor(){
-    super();
-    this.state = {
-      refugees: []
-    }
+  constructor(props){
+    super(props);
+    // this.state = {
+    //   refugees: []
+    // }
   }
 
-  componentDidMount(){
-    this.setState({refugees: dummyData})
-  }
+  // componentDidMount(){
+  //   this.setState({refugees: dummyData})
+  // }
 
-  addStory = (refugee) => {
+  // addStory = (newRefugee) => {
+  //   const refugees = this.state.refugees;
+  //   const newRefugees = refugees.push(newRefugee);
+  //   this.setState({refugees: newRefugees})
+  // }
 
-  }
   render(){
     return (
       <div>
         <Header title="Our Stories"/>
         <StoryListCon className="menu-bar" >
         
-        {this.state.refugees.map(refugee => {
+        {this.props.refugees.map(refugee => {
           // console.log(refugee.name)
           return (
             <StoryCard 

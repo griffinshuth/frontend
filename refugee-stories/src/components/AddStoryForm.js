@@ -54,7 +54,8 @@ export default class AddStoryForm extends Component {
 
   onStorySubmit = event => {
     event.preventDefault();
-    console.log(this.state.refugee);
+    // console.log(this.state.refugee);
+    this.addStory(this.state.refugee);
   }
 
   render(){
