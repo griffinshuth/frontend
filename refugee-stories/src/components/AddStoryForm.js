@@ -35,10 +35,13 @@ export default class AddStoryForm extends Component {
     super(props);
     this.state = {
       refugee: {
+        
         name: '',
         age: '',
-        url: '',
-        story: ''
+        imgUrl: '',
+        story: '',
+        country:''
+        
       }
     }
   }
@@ -55,7 +58,7 @@ export default class AddStoryForm extends Component {
   onStorySubmit = event => {
     event.preventDefault();
     // console.log(this.state.refugee);
-    this.addStory(this.state.refugee);
+    this.props.addStory(this.state.refugee);
   }
 
   render(){
