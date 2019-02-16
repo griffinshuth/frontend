@@ -28,13 +28,31 @@ class App extends Component {
 
       // push new refugee to array of refugees
       refugees.push(newRefugee);
-      
+
       // Note to self: return is required when using 
       // the functional version of state since it returns 
       // what you want state to be
       return {refugees};
     })
-    
+  }
+
+  approveStory = (name) => {
+    // name will be placeholder for id while backend is still in development
+    this.setState(prevState => {
+      const refugees = Array.from(prevState.refugees);
+      const pendingStory = refugees.find(refugee => refugee.name === name);
+      pendingStory.approved = true;
+      return {refugees}
+    })
+  }
+
+  deleteStory = (name) => {
+    // name will be placeholder for id while backend is still in development
+    this.setState(prevState => {
+      // const refugees = Array.from(prevState.refugees);
+      const refugees = prevState.refugees.filter(refugee => refugee.name !== name);
+      return {refugees}
+})
   }
 
   render() {
@@ -54,7 +72,14 @@ class App extends Component {
           />
           )}
           />
-        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/admin" render={(props) => (
+          <Admin 
+            {...props}
+            refugees={this.state.refugees}
+            approveStory={this.approveStory}
+            deleteStory={this.deleteStory}
+          />
+        )} />
       </div>
     );
   }

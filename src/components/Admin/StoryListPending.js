@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import StoryCardPending from './StoryCardPending';
-import Header from '../Header';
 
 const StoryListCon = styled.div`
   display: flex;
@@ -13,18 +12,32 @@ const StoryListCon = styled.div`
   padding: 100px 2%;
 `
 
-const StoryList = () => {
-  return (
-    <div>
-      <StoryListCon>
-        <StoryCardPending />
-        <StoryCardPending />
-        <StoryCardPending />
-        <StoryCardPending />
-      </StoryListCon>
-    </div>
-    
-  )
+export default class StoryListPending extends React.Component {
+  
+  render(){
+    const refugees = this.props.refugees.filter(refugee => refugee.approved === false)
+    return (
+      <div>
+        <StoryListCon className="menu-bar" >
+          {refugees.map(refugee =>  (
+              <StoryCardPending 
+                key={refugee.name}
+                name={refugee.name} 
+                age={refugee.age}
+                country={refugee.country}
+                story={refugee.story}
+                imgUrl={refugee.imgUrl} 
+                approved={refugee.approved}
+                approveStory={this.props.approveStory}
+                deleteStory={this.props.deleteStory}
+              />
+            )
+          )
+          }          
+        </StoryListCon>
+      </div>
+      
+    )
+  }
+  
 }
-
-export default StoryList;

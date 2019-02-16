@@ -5,7 +5,7 @@ import MenuBar from './MenuBar';
 import headerImg from '../images/header.jpg';
 
 const HeaderCon = styled.header`
-  background: url(${headerImg}) bottom center;
+  background: url(${headerImg}) bottom center no-repeat;
   background-size: 100%;
   min-height: 500px;
 `
@@ -25,9 +25,7 @@ const HeaderTitle = styled.div`
 `
 
 class Header extends Component {
-  constructor(props){
-    super(props);
-  }
+  
   render() {
     return (
       <HeaderCon>

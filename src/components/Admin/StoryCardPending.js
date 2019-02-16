@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import refugeeImg from '../../images/refugee-photo.jpg';
 
 const PendingCardCon = styled.div`
   width: 100%;
@@ -19,16 +18,11 @@ const Img = styled.img`
   max-width: 100%;
 `
 
-const Title = styled.div`
+const Name = styled.div`
   text-transform: uppercase;
   font-size: 1.4rem;
   letter-spacing: 2px;
   margin-bottom: 10px;
-`
-
-const Name = styled.div`
-  text-transform: uppercase;
-  font-size: 1.4rem;
 `
 
 const Country = styled.div`
@@ -43,7 +37,6 @@ const Story = styled.div`
 
 const PendingContent = styled.div`
   display: flex;
-  /* align-items: center; */
   width: 100%;
 `
 
@@ -57,26 +50,38 @@ const ApprovalButtonsCon = styled.div`
 
 
 
-const StoryCardPending = () => {
+const StoryCardPending = (props) => {
+
+  const onClickApprove = event => {
+    event.preventDefault()
+    // name will be placeholder for id until backend is ready to implement to project
+    // console.log(props.name)
+    props.approveStory(props.name)
+  }
+
+  const onClickDelete = event => {
+    event.preventDefault()
+    props.deleteStory(props.name)
+  }
+
   return (
     <PendingCardCon>
       <PendingContent>
         <ImgCon>
-          <Img src={refugeeImg} alt="" />
+          <Img src={props.imgUrl} alt="" />
         </ImgCon>
         <PendingText>
-          <Title>Title</Title>
-          <Name>By Refugee Name</Name>
-          <div>Age</div>
-          <Country>Country of Origin</Country>
-          <Story>I have reset the sensors to scan for frequencies outside the usual range. By emitting harmonic vibrations to shatter the lattices. We will monitor and adjust the frequency of the resonators. He has this ability of instantly interpreting and extrapolating any verbal communication he hears. It may be due to the envelope over the structure, causing hydrogen-carbon helix patterns throughout. I'm comparing the molecular integrity of that bubble against our phasers.
+          <Name>{props.name}</Name>
+          <div>{props.age}</div>
+          <Country>{props.country}</Country>
+          <Story>{props.story}
           </Story>
         </PendingText>
       </PendingContent>
       <ApprovalButtonsCon>
-        <button>Approve</button>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={onClickApprove}>Approve</button>
+        {/* <button>Edit</button> */}
+        <button onClick={onClickDelete}>Delete</button>
       </ApprovalButtonsCon>
     </PendingCardCon>
   )

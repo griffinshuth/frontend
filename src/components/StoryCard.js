@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import refugeeImg from '../images/refugee-photo.jpg';
 
 const StoryCardCon = styled.div`
   width: 40%;

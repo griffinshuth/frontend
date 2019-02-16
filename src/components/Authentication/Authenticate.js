@@ -36,7 +36,11 @@ const Authenticate = Admin => {
           <div>
             <Header title="Pending Stories" />
             <button onClick={this.onLogout}>Log Out</button>
-            <StoryListPending />
+            <StoryListPending 
+              refugees={this.props.refugees} 
+              approveStory={this.props.approveStory}
+              deleteStory={this.props.deleteStory}
+            />
           </div>
         )
       } else {
