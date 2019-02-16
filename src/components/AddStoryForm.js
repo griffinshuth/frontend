@@ -40,8 +40,8 @@ export default class AddStoryForm extends Component {
         age: '',
         imgUrl: '',
         story: '',
-        country:''
-        
+        country:'',
+        approved: false 
       }
     }
   }
@@ -57,8 +57,17 @@ export default class AddStoryForm extends Component {
 
   onStorySubmit = event => {
     event.preventDefault();
-    // console.log(this.state.refugee);
     this.props.addStory(this.state.refugee);
+    this.setState({
+      refugee: {
+        name:'',
+        age: '',
+        imgUrl: '',
+        story: '',
+        country:'',
+        approved: false
+      } 
+    })
   }
 
   render(){
@@ -68,10 +77,11 @@ export default class AddStoryForm extends Component {
         <FormCon>
           <FormTitle>Share your story with the world</FormTitle>
           <Form>
-            <input type="text" name="name" placeholder="Name" onChange={this.onInputChange} />
-            <input type="number" name="age" placeholder="Age" onChange={this.onInputChange} />
-            <input type="text" name="imgUrl" placeholder="Image URL" onChange={this.onInputChange} />
-            <textarea name="story" rows="10" cols="30" placeholder="Your story starts here..." onChange={this.onInputChange}></textarea>
+            <input type="text" name="name" value={this.state.name}placeholder="Name" onChange={this.onInputChange} />
+            <input type="number" name="age" value={this.state.age}placeholder="Age" onChange={this.onInputChange} />
+            <input type="country" name="country" value={this.state.country}placeholder="country" onChange={this.onInputChange} />
+            <input type="text" name="imgUrl" value={this.state.imgUrl}placeholder="Image URL" onChange={this.onInputChange} />
+            <textarea name="story" rows="10" cols="30" value={this.state.story}placeholder="Your story starts here..." onChange={this.onInputChange}></textarea>
             <button type="submit" onClick={this.onStorySubmit}>Submit</button>
           </Form>
         </FormCon>

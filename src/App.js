@@ -22,10 +22,13 @@ class App extends Component {
 
   addStory = (newRefugee) => {
     this.setState(prevState => {
+
       // create copy of refugees 
       const refugees = Array.from(prevState.refugees); 
+
       // push new refugee to array of refugees
       refugees.push(newRefugee);
+      
       // Note to self: return is required when using 
       // the functional version of state since it returns 
       // what you want state to be

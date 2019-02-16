@@ -16,24 +16,29 @@ const StoryListCon = styled.div`
 export default class StoryList extends React.Component {
   constructor(props){
     super(props); 
+
+    
   }
 
   render(){
+    const refugees = this.props.refugees.filter(refugee => refugee.approved)
     return (
       <div>
         <Header title="Our Stories"/>
         <StoryListCon className="menu-bar" >
-          {this.props.refugees.map(refugee =>  (
+          {console.log(refugees, this.props.refugees)}
+          {refugees.map(refugee =>  (
               <StoryCard 
-              key={refugee.id}
-              name={refugee.name} 
-              age={refugee.age}
-              country={refugee.country}
-              story={refugee.story}
-              imgUrl={refugee.imgUrl} />
+                key={refugee.name}
+                name={refugee.name} 
+                age={refugee.age}
+                country={refugee.country}
+                story={refugee.story}
+                imgUrl={refugee.imgUrl} 
+              />
             )
           )
-          }
+          }          
         </StoryListCon>
       </div>
       
