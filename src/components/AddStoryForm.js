@@ -35,7 +35,6 @@ export default class AddStoryForm extends Component {
     super(props);
     this.state = {
       refugee: {
-        
         name: '',
         age: '',
         imgUrl: '',
@@ -77,11 +76,11 @@ export default class AddStoryForm extends Component {
         <FormCon>
           <FormTitle>Share your story with the world</FormTitle>
           <Form>
-            <input type="text" name="name" value={this.state.name}placeholder="Name" onChange={this.onInputChange} />
-            <input type="number" name="age" value={this.state.age}placeholder="Age" onChange={this.onInputChange} />
-            <input type="country" name="country" value={this.state.country}placeholder="country" onChange={this.onInputChange} />
-            <input type="text" name="imgUrl" value={this.state.imgUrl}placeholder="Image URL" onChange={this.onInputChange} />
-            <textarea name="story" rows="10" cols="30" value={this.state.story}placeholder="Your story starts here..." onChange={this.onInputChange}></textarea>
+            <input type="text" name="name" value={this.state.refugee.name} placeholder="Name" onChange={this.onInputChange} />
+            <input type="number" name="age" value={this.state.refugee.age} placeholder="Age" onChange={this.onInputChange} />
+            <input type="country" name="country" value={this.state.refugee.country} placeholder="country" onChange={this.onInputChange} />
+            <input type="text" name="imgUrl" value={this.state.refugee.imgUrl} placeholder="Image URL" onChange={this.onInputChange} />
+            <textarea name="story" rows="10" cols="30" value={this.state.refugee.story} placeholder="Your story starts here..." onChange={this.onInputChange}></textarea>
             <button type="submit" onClick={this.onStorySubmit}>Submit</button>
           </Form>
         </FormCon>

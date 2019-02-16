@@ -37,6 +37,7 @@ class App extends Component {
   }
 
   approveStory = (name) => {
+
     // name will be placeholder for id while backend is still in development
     this.setState(prevState => {
       const refugees = Array.from(prevState.refugees);
@@ -47,8 +48,10 @@ class App extends Component {
   }
 
   deleteStory = (name) => {
+
     // name will be placeholder for id while backend is still in development
     this.setState(prevState => {
+      
       // const refugees = Array.from(prevState.refugees);
       const refugees = prevState.refugees.filter(refugee => refugee.name !== name);
       return {refugees}

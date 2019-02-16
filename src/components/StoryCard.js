@@ -8,7 +8,6 @@ const StoryCardCon = styled.div`
   margin: 20px;
   text-align: center;
   color: rgb(124, 128, 129);
-  /* border: 1px solid black; */
 `
 
 const ImgCon = styled.div`
