@@ -23,7 +23,7 @@ const Authenticate = Admin => {
     onLogout = event => {
       event.preventDefault();
       localStorage.clear();
-      window.location.reload();
+      // window.location.reload();
       this.setState({
         loggedIn: false
       });

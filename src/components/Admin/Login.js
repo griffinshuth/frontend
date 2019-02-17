@@ -46,6 +46,7 @@ export default class Login extends Component {
   }
 
   onLogin = event => {
+    event.preventDefault();
     localStorage.setItem('user', this.state.usernameInput);
     // window.onbeforeunload();
   }
