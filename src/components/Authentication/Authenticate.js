@@ -34,7 +34,7 @@ const Authenticate = Admin => {
     }
 
     render() {
-      if (this.state.loggedIn) {
+      if (localStorage.getItem("user")) {
         return (
           <div>
             <Header title="Pending Stories" />
