@@ -1,0 +1,11 @@
+.App {
+  font-family: 'Lato', sans-serif;
+  background-color: rgb(232, 238, 244);
+  padding-bottom: 100px;
+}
+
+.menu-item {
+  padding-left: 30px;
+  text-decoration: none;
+  color: #ffffff;
+}
