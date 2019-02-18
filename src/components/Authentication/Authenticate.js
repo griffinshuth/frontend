@@ -23,7 +23,6 @@ const Authenticate = Admin => {
     onLogout = event => {
       event.preventDefault();
       localStorage.clear();
-      window.location.reload();
     }
 
     componentDidMount() {
