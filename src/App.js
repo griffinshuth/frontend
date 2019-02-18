@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
 
 import StoryList from './components/StoryList';
 import AddStoryForm from './components/AddStoryForm';
@@ -17,7 +18,14 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.setState({refugees: dummyData})
+    // this.setState({refugees: dummyData})
+    axios
+      .get('https://refugee-stories-backend.herokuapp.com/api/stories')
+      .then(response => {
+        console.log(response.data);
+        this.setState({refugees: response.data})
+      })
+      .catch(error => console.log(error));
   }
 
   addStory = (newRefugee) => {
@@ -36,24 +44,22 @@ class App extends Component {
     })
   }
 
-  approveStory = (name) => {
+  approveStory = (id) => {
 
-    // name will be placeholder for id while backend is still in development
     this.setState(prevState => {
       const refugees = Array.from(prevState.refugees);
-      const pendingStory = refugees.find(refugee => refugee.name === name);
+      const pendingStory = refugees.find(refugee => refugee.id === id);
       pendingStory.approved = true;
       return {refugees}
     })
   }
 
-  deleteStory = (name) => {
+  deleteStory = (id) => {
 
-    // name will be placeholder for id while backend is still in development
     this.setState(prevState => {
       
       // const refugees = Array.from(prevState.refugees);
-      const refugees = prevState.refugees.filter(refugee => refugee.name !== name);
+      const refugees = prevState.refugees.filter(refugee => refugee.id !== id);
       return {refugees}
 })
   }

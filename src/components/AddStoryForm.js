@@ -37,9 +37,9 @@ export default class AddStoryForm extends Component {
       refugee: {
         name: '',
         age: '',
-        imgUrl: '',
+        image: '',
         story: '',
-        country:'',
+        location:'',
         approved: false 
       }
     }
@@ -59,11 +59,11 @@ export default class AddStoryForm extends Component {
     this.props.addStory(this.state.refugee);
     this.setState({
       refugee: {
-        name:'',
+        author:'',
         age: '',
-        imgUrl: '',
-        story: '',
-        country:'',
+        image: '',
+        content: '',
+        location:'',
         approved: false
       } 
     })
@@ -73,14 +73,14 @@ export default class AddStoryForm extends Component {
     return (
       <FormComponent>
         <Header title="Submit Your Story" />
-        <FormCon>
+        <FormCon> 
           <FormTitle>Share your story with the world</FormTitle>
           <Form>
-            <input type="text" name="name" value={this.state.refugee.name} placeholder="Name" onChange={this.onInputChange} />
+            <input type="text" name="author" value={this.state.refugee.author} placeholder="Name" onChange={this.onInputChange} />
             <input type="number" name="age" value={this.state.refugee.age} placeholder="Age" onChange={this.onInputChange} />
-            <input type="country" name="country" value={this.state.refugee.country} placeholder="country" onChange={this.onInputChange} />
-            <input type="text" name="imgUrl" value={this.state.refugee.imgUrl} placeholder="Image URL" onChange={this.onInputChange} />
-            <textarea name="story" rows="10" cols="30" value={this.state.refugee.story} placeholder="Your story starts here..." onChange={this.onInputChange}></textarea>
+            <input type="location" name="location" value={this.state.refugee.location} placeholder="location" onChange={this.onInputChange} />
+            <input type="text" name="image" value={this.state.refugee.image} placeholder="Image URL" onChange={this.onInputChange} />
+            <textarea name="content" rows="10" cols="30" value={this.state.refugee.content} placeholder="Your story starts here..." onChange={this.onInputChange}></textarea>
             <button type="submit" onClick={this.onStorySubmit}>Submit</button>
           </Form>
         </FormCon>

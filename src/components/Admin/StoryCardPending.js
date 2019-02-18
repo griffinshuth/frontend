@@ -25,7 +25,7 @@ const Name = styled.div`
   margin-bottom: 10px;
 `
 
-const Country = styled.div`
+const location = styled.div`
   text-transform: uppercase;
 `
 
@@ -56,31 +56,30 @@ const StoryCardPending = (props) => {
     event.preventDefault()
     // name will be placeholder for id until backend is ready to implement to project
     // console.log(props.name)
-    props.approveStory(props.name)
+    props.approveStory(props.id)
   }
 
   const onClickDelete = event => {
     event.preventDefault()
-    props.deleteStory(props.name)
+    props.deleteStory(props.id)
   }
 
   return (
     <PendingCardCon>
       <PendingContent>
         <ImgCon>
-          <Img src={props.imgUrl} alt="" />
+          <Img src={props.image} alt="" />
         </ImgCon>
         <PendingText>
-          <Name>{props.name}</Name>
+          <Name>{props.author}</Name>
           <div>{props.age}</div>
-          <Country>{props.country}</Country>
-          <Story>{props.story}
+          <location>{props.location}</location>
+          <Story>{props.content}
           </Story>
         </PendingText>
       </PendingContent>
       <ApprovalButtonsCon>
         <button onClick={onClickApprove}>Approve</button>
-        {/* <button>Edit</button> */}
         <button onClick={onClickDelete}>Delete</button>
       </ApprovalButtonsCon>
     </PendingCardCon>

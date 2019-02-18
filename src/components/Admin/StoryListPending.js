@@ -22,11 +22,12 @@ export default class StoryListPending extends React.Component {
           {refugees.map(refugee =>  (
               <StoryCardPending 
                 key={refugee.name}
-                name={refugee.name} 
+                id={refugee.id}
+                author={refugee.author} 
                 age={refugee.age}
-                country={refugee.country}
-                story={refugee.story}
-                imgUrl={refugee.imgUrl} 
+                location={refugee.location}
+                content={refugee.content}
+                image={refugee.image} 
                 approved={refugee.approved}
                 approveStory={this.props.approveStory}
                 deleteStory={this.props.deleteStory}

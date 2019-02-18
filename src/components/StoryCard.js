@@ -39,12 +39,12 @@ const StoryCard = (props) => {
   return (
     <StoryCardCon>
       <ImgCon>
-        <Img src={props.imgUrl} alt="" />
+        <Img src={props.image} alt="" />
       </ImgCon>
-      <Name>{props.name}</Name>
+      <Name>{props.author}</Name>
       <div>{props.age}</div>
-      <Country>{props.country}</Country>
-      <Story>{props.story}</Story>
+      <Country>{props.location}</Country>
+      <Story>{props.content}</Story>
     </StoryCardCon>
   )
 }
