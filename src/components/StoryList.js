@@ -22,7 +22,6 @@ export default class StoryList extends React.Component {
         <Header title="Our Stories"/>
         <StoryListCon className="menu-bar" >
           {refugees.map(refugee =>  (
-            console.log(refugee.image),
               <StoryCard 
                 key={refugee.id}
                 id={refugee.id}

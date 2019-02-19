@@ -6,7 +6,6 @@ import axios from 'axios';
 import StoryList from './components/StoryList';
 import AddStoryForm from './components/AddStoryForm';
 import Admin from './components/Admin/Admin';
-import dummyData from './dummyData';
 
 class App extends Component {
 
@@ -22,26 +21,32 @@ class App extends Component {
     axios
       .get('https://refugee-stories-backend.herokuapp.com/api/stories')
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({refugees: response.data})
       })
       .catch(error => console.log(error));
   }
 
   addStory = (newRefugee) => {
-    this.setState(prevState => {
 
-      // create copy of refugees 
-      const refugees = Array.from(prevState.refugees); 
+    axios
+      .post('https://refugee-stories-backend.herokuapp.com/api/story', newRefugee)
+      .then(response => {console.log(response)})
+      .catch(error => {console.log(error)})
 
-      // push new refugee to array of refugees
-      refugees.push(newRefugee);
+    // this.setState(prevState => {
 
-      // Note to self: return is required when using 
-      // the functional version of state since it returns 
-      // what you want state to be
-      return {refugees};
-    })
+    //   // create copy of refugees 
+    //   const refugees = Array.from(prevState.refugees); 
+
+    //   // push new refugee to array of refugees
+    //   refugees.push(newRefugee);
+
+    //   // Note to self: return is required when using 
+    //   // the functional version of state since it returns 
+    //   // what you want state to be
+    //   return {refugees};
+    // })
   }
 
   approveStory = (id) => {
