@@ -8,6 +8,11 @@ const HeaderCon = styled.header`
   background: url(${headerImg}) bottom center no-repeat;
   background-size: 100%;
   min-height: 500px;
+  @media (max-width: 800px){
+    min-height: 400px;
+    background-size: cover;
+  }
+  
 `
 
 const HeaderTitle = styled.div`
@@ -22,6 +27,11 @@ const HeaderTitle = styled.div`
   letter-spacing: 8px;
   font-size: 3rem;
   text-align: center;
+  @media (max-width: 800px){
+    max-width: 80%;
+    padding: 100px 20px;
+    margi-top: 20px;
+  }
 `
 
 class Header extends Component {

@@ -8,9 +8,10 @@ export default class Admin extends Component {
     return (
       <div>
         <Authenticate 
-          refugees={this.props.refugees}
+          pending={this.props.pending}
           approveStory={this.props.approveStory}
           deleteStory={this.props.deleteStory}
+          
         />
       </div>
       

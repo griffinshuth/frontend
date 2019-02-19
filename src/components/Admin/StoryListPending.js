@@ -23,13 +23,14 @@ export default class StoryListPending extends React.Component {
 
   componentDidMount(){
     axios
-      .get('http://refugee-stories-backend.herokuapp.com/api/story')
+      .get('https://refugee-stories-backend.herokuapp.com/api/story')
       .then(response => {
         console.log(response.data);
         this.setState({pending: response.data})
       })
       .catch(error => console.log(error));
   }
+
   
   render(){
     return (  

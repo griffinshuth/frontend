@@ -50,23 +50,32 @@ class App extends Component {
   }
 
   approveStory = (id) => {
+    axios
+      .put(`https://refugee-stories-backend.herokuapp.com/api/approve/${id}`)
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
 
-    this.setState(prevState => {
-      const refugees = Array.from(prevState.refugees);
-      const pendingStory = refugees.find(refugee => refugee.id === id);
-      pendingStory.approved = true;
-      return {refugees}
-    })
+
+    // this.setState(prevState => {
+    //   const refugees = Array.from(prevState.refugees);
+    //   const pendingStory = refugees.find(refugee => refugee.id === id);
+    //   pendingStory.approved = true;
+    //   return {refugees}
+    // })
   }
 
   deleteStory = (id) => {
+    axios
+    .delete(`https://refugee-stories-backend.herokuapp.com/api/story/${id}`)
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
 
-    this.setState(prevState => {
+//     this.setState(prevState => {
       
-      // const refugees = Array.from(prevState.refugees);
-      const refugees = prevState.refugees.filter(refugee => refugee.id !== id);
-      return {refugees}
-})
+//       // const refugees = Array.from(prevState.refugees);
+//       const refugees = prevState.refugees.filter(refugee => refugee.id !== id);
+//       return {refugees}
+// })
   }
 
   render() {
@@ -92,6 +101,7 @@ class App extends Component {
             refugees={this.state.refugees}
             approveStory={this.approveStory}
             deleteStory={this.deleteStory}
+            pending={this.state.pending}
           />
         )} />
       </div>
