@@ -12,7 +12,6 @@ const HeaderCon = styled.header`
     min-height: 400px;
     background-size: cover;
   }
-  
 `
 
 const HeaderTitle = styled.div`
@@ -30,7 +29,11 @@ const HeaderTitle = styled.div`
   @media (max-width: 800px){
     max-width: 80%;
     padding: 100px 20px;
-    margi-top: 20px;
+    margin-top: 20px;
+  }
+  @media (max-width: 500px){
+
+    padding: 50px 20px;
   }
 `
 
