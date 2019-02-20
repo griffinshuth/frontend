@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 import Admin from '../Admin/Admin';
 import Header from '../Header';
 import StoryListPending from '../Admin/StoryListPending';
@@ -23,6 +24,7 @@ const Authenticate = Admin => {
     onLogout = event => {
       event.preventDefault();
       localStorage.clear();
+      this.props.history.push('/');
     }
 
     componentDidMount() {

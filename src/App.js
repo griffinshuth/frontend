@@ -31,7 +31,10 @@ class App extends Component {
 
     axios
       .post('https://refugee-stories-backend.herokuapp.com/api/story', newRefugee)
-      .then(response => {console.log(response)})
+      .then(response => {
+        console.log(response)
+        this.props.history.push('/');
+      })
       .catch(error => {console.log(error)})
 
     // this.setState(prevState => {
