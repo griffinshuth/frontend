@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 const PendingCardCon = styled.div`
   width: 100%;
@@ -51,45 +50,56 @@ const ApprovalButtonsCon = styled.div`
 
 const StoryCardPending = props => {
 
-  const onClickApprove = event => {
-    event.preventDefault();
-    // name will be placeholder for id until backend is ready to implement to project
-    // console.log(props.name)
-    const token = localStorage.getItem("token");
-    if (token) {
-      axios
-        .put(
-          `https://refugee-stories-backend.herokuapp.com/api/approve/${props.id}`, null, {
-            headers: {
-              Authorization: token
-            }
-          }
-        )
-        // .then()
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
-    }
-  };
+  // const onClickApprove = event => {
+  //   event.preventDefault();
+  //   // name will be placeholder for id until backend is ready to implement to project
+  //   // console.log(props.name)
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     axios
+  //       .put(
+  //         `https://refugee-stories-backend.herokuapp.com/api/approve/${props.id}`, null, {
+  //           headers: {
+  //             Authorization: token
+  //           }
+  //         }
+  //       )
+  //       // .then()
+  //       .then(res => console.log(res))
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
-  const onClickDelete = event => {
+  // const onClickDelete = event => {
+  //   event.preventDefault();
+  //   // name will be placeholder for id until backend is ready to implement to project
+  //   // console.log(props.name)
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     axios
+  //       .delete(
+  //         `https://refugee-stories-backend.herokuapp.com/api/story/${props.id}`, {
+  //           headers: {
+  //             Authorization: token
+  //           }
+  //         }
+  //       )
+  //       // .then()
+  //       .then(res => console.log(res))
+  //       .catch(err => console.log(err));
+  //   }
+  // };
+
+  const clickApprove = event => {
     event.preventDefault();
-    // name will be placeholder for id until backend is ready to implement to project
-    // console.log(props.name)
-    const token = localStorage.getItem("token");
-    if (token) {
-      axios
-        .delete(
-          `https://refugee-stories-backend.herokuapp.com/api/story/${props.id}`, {
-            headers: {
-              Authorization: token
-            }
-          }
-        )
-        // .then()
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
-    }
-  };
+    // console.log(props.id)
+    props.onClickApprove(props.id);
+  }
+
+  const clickDelete = event => {
+    event.preventDefault();
+    props.onClickDelete(props.id);
+  }
 
   return (
     <PendingCardCon>
@@ -105,8 +115,8 @@ const StoryCardPending = props => {
         </PendingText>
       </PendingContent>
       <ApprovalButtonsCon>
-        <button onClick={onClickApprove}>Approve</button>
-        <button onClick={onClickDelete}>Delete</button>
+        <button onClick={clickApprove}>Approve</button>
+        <button onClick={clickDelete}>Delete</button>
       </ApprovalButtonsCon>
     </PendingCardCon>
   );

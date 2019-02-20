@@ -17,7 +17,8 @@ export default class StoryListPending extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      pending: []
+      pending: [],
+      public: []
     }
   }
 
@@ -38,6 +39,45 @@ export default class StoryListPending extends React.Component {
     }
   }
 
+  onClickApprove = id => {
+    // name will be placeholder for id until backend is ready to implement to project
+    // console.log(id)
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios
+        .put(
+          `https://refugee-stories-backend.herokuapp.com/api/approve/${id}`, null, {
+            headers: {
+              Authorization: token
+            }
+          }
+        )
+        // .then()
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
+  };
+  
+  onClickDelete = id => {
+    // name will be placeholder for id until backend is ready to implement to project
+    // console.log(props.name)
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios
+        .delete(
+          `https://refugee-stories-backend.herokuapp.com/api/story/${id}`, {
+            headers: {
+              Authorization: token
+            }
+          }
+        )
+        // .then()
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
+  };
+
+  
   
   render(){
     return (  
@@ -55,6 +95,8 @@ export default class StoryListPending extends React.Component {
                 approved={refugee.approved}
                 approveStory={this.props.approveStory}
                 deleteStory={this.props.deleteStory}
+                onClickApprove={this.onClickApprove}
+                onClickDelete={this.onClickDelete}
               />
             )
           )
