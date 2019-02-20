@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import StoryCardPending from './StoryCardPending';
 
@@ -13,20 +14,37 @@ const StoryListCon = styled.div`
 `
 
 export default class StoryListPending extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      pending: []
+    }
+  }
+
+  componentDidMount(){
+    axios
+      .get('https://refugee-stories-backend.herokuapp.com/api/story')
+      .then(response => {
+        console.log(response.data);
+        this.setState({pending: response.data})
+      })
+      .catch(error => console.log(error));
+  }
+
   
   render(){
-    const refugees = this.props.refugees.filter(refugee => refugee.approved === false)
-    return (
+    return (  
       <div>
         <StoryListCon className="menu-bar" >
-          {refugees.map(refugee =>  (
+          {this.state.pending.map(refugee =>  (
               <StoryCardPending 
-                key={refugee.name}
-                name={refugee.name} 
+                key={refugee.id}
+                id={refugee.id}
+                author={refugee.author} 
                 age={refugee.age}
-                country={refugee.country}
-                story={refugee.story}
-                imgUrl={refugee.imgUrl} 
+                location={refugee.location}
+                content={refugee.content}
+                image={refugee.image} 
                 approved={refugee.approved}
                 approveStory={this.props.approveStory}
                 deleteStory={this.props.deleteStory}

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
+import axios from 'axios';
 
 import StoryList from './components/StoryList';
 import AddStoryForm from './components/AddStoryForm';
 import Admin from './components/Admin/Admin';
-import dummyData from './dummyData';
 
 class App extends Component {
 
@@ -17,45 +17,65 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.setState({refugees: dummyData})
+    // this.setState({refugees: dummyData})
+    axios
+      .get('https://refugee-stories-backend.herokuapp.com/api/stories')
+      .then(response => {
+        // console.log(response.data);
+        this.setState({refugees: response.data})
+      })
+      .catch(error => console.log(error));
   }
 
   addStory = (newRefugee) => {
-    this.setState(prevState => {
 
-      // create copy of refugees 
-      const refugees = Array.from(prevState.refugees); 
+    axios
+      .post('https://refugee-stories-backend.herokuapp.com/api/story', newRefugee)
+      .then(response => {console.log(response)})
+      .catch(error => {console.log(error)})
 
-      // push new refugee to array of refugees
-      refugees.push(newRefugee);
+    // this.setState(prevState => {
 
-      // Note to self: return is required when using 
-      // the functional version of state since it returns 
-      // what you want state to be
-      return {refugees};
-    })
+    //   // create copy of refugees 
+    //   const refugees = Array.from(prevState.refugees); 
+
+    //   // push new refugee to array of refugees
+    //   refugees.push(newRefugee);
+
+    //   // Note to self: return is required when using 
+    //   // the functional version of state since it returns 
+    //   // what you want state to be
+    //   return {refugees};
+    // })
   }
 
-  approveStory = (name) => {
+  approveStory = (id) => {
+    axios
+      .put(`https://refugee-stories-backend.herokuapp.com/api/approve/${id}`)
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
 
-    // name will be placeholder for id while backend is still in development
-    this.setState(prevState => {
-      const refugees = Array.from(prevState.refugees);
-      const pendingStory = refugees.find(refugee => refugee.name === name);
-      pendingStory.approved = true;
-      return {refugees}
-    })
+
+    // this.setState(prevState => {
+    //   const refugees = Array.from(prevState.refugees);
+    //   const pendingStory = refugees.find(refugee => refugee.id === id);
+    //   pendingStory.approved = true;
+    //   return {refugees}
+    // })
   }
 
-  deleteStory = (name) => {
+  deleteStory = (id) => {
+    axios
+    .delete(`https://refugee-stories-backend.herokuapp.com/api/story/${id}`)
+    .then(response => console.log(response))
+    .catch(error => console.log(error))
 
-    // name will be placeholder for id while backend is still in development
-    this.setState(prevState => {
+//     this.setState(prevState => {
       
-      // const refugees = Array.from(prevState.refugees);
-      const refugees = prevState.refugees.filter(refugee => refugee.name !== name);
-      return {refugees}
-})
+//       // const refugees = Array.from(prevState.refugees);
+//       const refugees = prevState.refugees.filter(refugee => refugee.id !== id);
+//       return {refugees}
+// })
   }
 
   render() {
@@ -81,6 +101,7 @@ class App extends Component {
             refugees={this.state.refugees}
             approveStory={this.approveStory}
             deleteStory={this.deleteStory}
+            pending={this.state.pending}
           />
         )} />
       </div>

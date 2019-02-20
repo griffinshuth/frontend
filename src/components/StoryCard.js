@@ -8,6 +8,10 @@ const StoryCardCon = styled.div`
   margin: 20px;
   text-align: center;
   color: rgb(124, 128, 129);
+  @media (max-width: 800px){
+    width: 100%;
+    max-width: 100%;
+  }
 `
 
 const ImgCon = styled.div`
@@ -39,12 +43,12 @@ const StoryCard = (props) => {
   return (
     <StoryCardCon>
       <ImgCon>
-        <Img src={props.imgUrl} alt="" />
+        <Img src={props.image} alt="" />
       </ImgCon>
-      <Name>{props.name}</Name>
+      <Name>{props.author}</Name>
       <div>{props.age}</div>
-      <Country>{props.country}</Country>
-      <Story>{props.story}</Story>
+      <Country>{props.location}</Country>
+      <Story>{props.content}</Story>
     </StoryCardCon>
   )
 }
