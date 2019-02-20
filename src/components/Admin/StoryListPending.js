@@ -21,14 +21,21 @@ export default class StoryListPending extends React.Component {
     }
   }
 
-  componentDidMount(){
-    axios
-      .get('https://refugee-stories-backend.herokuapp.com/api/story')
-      .then(response => {
-        console.log(response.data);
-        this.setState({pending: response.data})
-      })
-      .catch(error => console.log(error));
+  componentDidMount() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios
+        .get("https://refugee-stories-backend.herokuapp.com/api/story", {
+          headers: {
+            Authorization: token
+          }
+        })
+        .then(res => {
+          this.setState({ pending: res.data });
+        })
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
+    }
   }
 
   

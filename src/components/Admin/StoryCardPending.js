@@ -25,7 +25,7 @@ const Name = styled.div`
   margin-bottom: 10px;
 `
 
-const location = styled.div`
+const Location = styled.div`
   text-transform: uppercase;
 `
 
@@ -73,7 +73,7 @@ const StoryCardPending = (props) => {
         <PendingText>
           <Name>{props.author}</Name>
           <div>{props.age}</div>
-          <location>{props.location}</location>
+          <Location>{props.location}</Location>
           <Story>{props.content}
           </Story>
         </PendingText>
