@@ -31,18 +31,23 @@ export default class StoryListPending extends React.Component {
           headers: {
             Authorization: token
           }
-        })
+        })    
         .then(res => {
-          this.setState({ allStories: res.data });
+          const stories = res.data
+          // Filter stories by approved flag
+          const publicStories = stories.filter(story => story.approved)
+          const pendingStories = stories.filter(story => !story.approved)
+          this.setState({ 
+            allStories: res.data, 
+            public: publicStories,
+            pending: pendingStories
+           });
         })
-        
         .catch(err => console.log(err));
     }
   }
 
   onClickApprove = id => {
-    // name will be placeholder for id until backend is ready to implement to project
-    // console.log(id)
     const token = localStorage.getItem("token");
     if (token) {
       axios
@@ -60,8 +65,6 @@ export default class StoryListPending extends React.Component {
   };
   
   onClickDelete = id => {
-    // name will be placeholder for id until backend is ready to implement to project
-    // console.log(props.name)
     const token = localStorage.getItem("token");
     if (token) {
       axios
@@ -77,10 +80,6 @@ export default class StoryListPending extends React.Component {
         .catch(err => console.log(err));
     }
   };
-
-  // approvedStories = this.state.allStories.filter(refugee => (refugee.approved === false))
-  
-  // publicStories = this.state.allStories.filter(refugee => (refugee.approved === true))
 
   render(){
     return (  
@@ -107,7 +106,28 @@ export default class StoryListPending extends React.Component {
           )
           }          
         </StoryListCon>
-        
+        <h2>Public Stories</h2>
+        <StoryListCon className="menu-bar" >
+          {
+            this.state.public.map(refugee =>  (
+              <StoryCardPending 
+                key={refugee.id}
+                id={refugee.id}
+                author={refugee.author} 
+                age={refugee.age}
+                location={refugee.location}
+                content={refugee.content}
+                image={refugee.image} 
+                approved={refugee.approved}
+                approveStory={this.props.approveStory}
+                deleteStory={this.props.deleteStory}
+                onClickApprove={this.onClickApprove}
+                onClickDelete={this.onClickDelete}
+              />
+            )
+          )
+          }          
+        </StoryListCon>
       </div>
       
     )

@@ -38,7 +38,8 @@ export default class Login extends Component {
     super(props);
     this.state = {
       usernameInput: "",
-      passwordInput: ""
+      passwordInput: "",
+      processing: true
     };
   }
 
@@ -50,8 +51,6 @@ export default class Login extends Component {
     event.preventDefault();
     console.log(this.state);
 
-    // localStorage.setItem('user', this.state.usernameInput);
-    // window.onbeforeunload();
     axios
       .post("https://refugee-stories-backend.herokuapp.com/api/login", {
         username: this.state.usernameInput,
@@ -75,7 +74,7 @@ export default class Login extends Component {
   render() {
     return (
       <FormComponent>
-        <FormCon>
+          <FormCon>
           <FormTitle>Refugee Stories Admin Login</FormTitle>
           <Form>
             <input

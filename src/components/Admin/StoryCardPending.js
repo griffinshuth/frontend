@@ -115,7 +115,8 @@ const StoryCardPending = props => {
         </PendingText>
       </PendingContent>
       <ApprovalButtonsCon>
-        <button onClick={clickApprove}>Approve</button>
+        {!props.approved ? (<button onClick={clickApprove}>Approve</button>) : null}
+        
         <button onClick={clickDelete}>Delete</button>
       </ApprovalButtonsCon>
     </PendingCardCon>
