@@ -29,7 +29,7 @@ const Authenticate = Admin => {
       this.setState({
         loggedIn: false
       });
-      window.location = '/admin'
+      window.location = '/'
     };
 
     componentDidMount() {

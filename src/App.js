@@ -34,23 +34,10 @@ class App extends Component {
       .post('https://refugee-stories-backend.herokuapp.com/api/story', newRefugee)
       .then(response => {
         console.log(response);
-        this.props.history.push('/');
       })
+      // .then(window.location = '/')
       .catch(error => {console.log(error)})
 
-    // this.setState(prevState => {
-
-    //   // create copy of refugees 
-    //   const refugees = Array.from(prevState.refugees); 
-
-    //   // push new refugee to array of refugees
-    //   refugees.push(newRefugee);
-
-    //   // Note to self: return is required when using 
-    //   // the functional version of state since it returns 
-    //   // what you want state to be
-    //   return {refugees};
-    // })
   }
 
   approveStory = (id) => {
@@ -58,14 +45,7 @@ class App extends Component {
       .put(`https://refugee-stories-backend.herokuapp.com/api/approve/${id}`)
       .then(response => console.log(response))
       .catch(error => console.log(error))
-
-
-    // this.setState(prevState => {
-    //   const refugees = Array.from(prevState.refugees);
-    //   const pendingStory = refugees.find(refugee => refugee.id === id);
-    //   pendingStory.approved = true;
-    //   return {refugees}
-    // })
+   
   }
 
   deleteStory = (id) => {
@@ -74,12 +54,6 @@ class App extends Component {
     .then(response => console.log(response))
     .catch(error => console.log(error))
 
-//     this.setState(prevState => {
-      
-//       // const refugees = Array.from(prevState.refugees);
-//       const refugees = prevState.refugees.filter(refugee => refugee.id !== id);
-//       return {refugees}
-// })
   }
 
   render() {

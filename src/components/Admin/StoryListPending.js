@@ -90,7 +90,9 @@ export default class StoryListPending extends React.Component {
             return {allStories};
           })
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err)
+        });
     }
   };
 
