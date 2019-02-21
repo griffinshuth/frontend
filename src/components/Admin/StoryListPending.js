@@ -41,7 +41,7 @@ export default class StoryListPending extends React.Component {
             allStories: res.data, 
             public: publicStories,
             pending: pendingStories
-           });
+          });
         })
         .catch(err => console.log(err));
     }
@@ -58,8 +58,13 @@ export default class StoryListPending extends React.Component {
             }
           }
         )
-        // .then()
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res)
+          // this.setState(prevState => {
+          //   const pending = Array.from(prevState.pending)
+          //   return pending;
+          // })
+        })
         .catch(err => console.log(err));
     }
   };
@@ -76,7 +81,15 @@ export default class StoryListPending extends React.Component {
           }
         )
         // .then()
-        .then(res => console.log(res))
+        .then(res => {
+          console.log(res)
+          this.setState(prevState => {
+            const allStories = prevState.allStories.filter(story => 
+              story.id !== id
+            )
+            return {allStories};
+          })
+        })
         .catch(err => console.log(err));
     }
   };
