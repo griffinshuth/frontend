@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import StoryList from './components/StoryList';
 import AddStoryForm from './components/AddStoryForm';
@@ -9,8 +10,8 @@ import Admin from './components/Admin/Admin';
 
 class App extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       refugees: []
     }
@@ -32,7 +33,7 @@ class App extends Component {
     axios
       .post('https://refugee-stories-backend.herokuapp.com/api/story', newRefugee)
       .then(response => {
-        console.log(response)
+        console.log(response);
         this.props.history.push('/');
       })
       .catch(error => {console.log(error)})
@@ -111,5 +112,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  history: PropTypes.object
+};
 
 export default App;

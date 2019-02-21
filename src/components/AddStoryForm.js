@@ -68,6 +68,7 @@ export default class AddStoryForm extends Component {
         approved: false
       } 
     })
+    window.location = '/';
   }
 
   render(){

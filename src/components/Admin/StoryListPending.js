@@ -17,8 +17,9 @@ export default class StoryListPending extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      pending: [],
-      public: []
+      allStories: [],
+      public: [],
+      pending: []
     }
   }
 
@@ -32,9 +33,9 @@ export default class StoryListPending extends React.Component {
           }
         })
         .then(res => {
-          this.setState({ pending: res.data });
+          this.setState({ allStories: res.data });
         })
-        .then(res => console.log(res.data))
+        
         .catch(err => console.log(err));
     }
   }
@@ -77,13 +78,17 @@ export default class StoryListPending extends React.Component {
     }
   };
 
+  // approvedStories = this.state.allStories.filter(refugee => (refugee.approved === false))
   
-  
+  // publicStories = this.state.allStories.filter(refugee => (refugee.approved === true))
+
   render(){
     return (  
       <div>
+        <h2>Pending Stories</h2>
         <StoryListCon className="menu-bar" >
-          {this.state.pending.map(refugee =>  (
+          {
+            this.state.pending.map(refugee =>  (
               <StoryCardPending 
                 key={refugee.id}
                 id={refugee.id}
@@ -102,6 +107,7 @@ export default class StoryListPending extends React.Component {
           )
           }          
         </StoryListCon>
+        
       </div>
       
     )

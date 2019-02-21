@@ -60,6 +60,7 @@ export default class Login extends Component {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
+        window.location = '/admin'
       })
       .catch(err => {
         console.log(err);
