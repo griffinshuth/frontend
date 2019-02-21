@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import Header from './Header';
 
 const FormComponent = styled.div`
-  min-height: 100vh;
+  /* min-height: 100vh; */
 `
 
 const FormCon = styled.div`
@@ -67,7 +68,9 @@ export default class AddStoryForm extends Component {
         content: '',
         location:'',
         approved: false
-      } 
+      },
+      editing: false
+  
     })
     // window.location = '/';
   }
@@ -75,7 +78,8 @@ export default class AddStoryForm extends Component {
   render(){
     return (
       <FormComponent>
-        {/* {editing ? return ( */}
+        {this.state.editing ? (
+          <>
           <Header title="Submit Your Story" />
           <FormCon> 
             <FormTitle>Share your story with the world</FormTitle>
@@ -88,7 +92,17 @@ export default class AddStoryForm extends Component {
               <button type="submit" onClick={this.onStorySubmit}>Submit</button>
             </Form>
           </FormCon>
-        )}
+          </>
+        ) : (
+          <div>
+            <h2>Thank you for sharing your story.</h2>
+            <Link to='/'>Go back to Refugee Stories</Link>
+          </div>
+            
+           
+          
+        )
+        }
         
         
       </FormComponent>

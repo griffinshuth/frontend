@@ -23,6 +23,10 @@ export default class StoryListPending extends React.Component {
     }
   }
 
+  // getStories = () => {
+    
+  // }
+
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
@@ -47,6 +51,8 @@ export default class StoryListPending extends React.Component {
     }
   }
 
+  
+
   onClickApprove = id => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -60,12 +66,14 @@ export default class StoryListPending extends React.Component {
         )
         .then(res => {
           console.log(res)
-          // this.setState(prevState => {
-          //   const pending = Array.from(prevState.pending)
-          //   return pending;
-          // })
+          this.setState(prevState => {
+            const pending = prevState.pending.filter(story => 
+              story.id !== id
+            )
+            return {pending};
+          })
         })
-        .catch(err => console.log(err));
+        .catch(err => {console.log(err)});
     }
   };
   
@@ -80,16 +88,28 @@ export default class StoryListPending extends React.Component {
             }
           }
         )
-        // .then()
-        .then(res => {
-          console.log(res)
-          this.setState(prevState => {
-            const allStories = prevState.allStories.filter(story => 
-              story.id !== id
-            )
-            return {allStories};
-          })
-        })
+        .then(this.setState(prevState => {
+          console.log(id)
+          const allStories = prevState.allStories.filter(story => 
+            story.id !== id
+          )
+          console.log(allStories)
+
+          return {allStories: allStories};
+        }),
+        console.log(this.state.allStories)
+        )
+    
+        
+        // .then(res => {
+        //   console.log(res)
+        //   this.setState(prevState => {
+        //     const allStories = prevState.allStories.filter(story => 
+        //       story.id !== id
+        //     )
+        //     return {allStories};
+        //   })
+        // })
         .catch(err => {
           console.log(err)
         });

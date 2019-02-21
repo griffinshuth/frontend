@@ -50,49 +50,8 @@ const ApprovalButtonsCon = styled.div`
 
 const StoryCardPending = props => {
 
-  // const onClickApprove = event => {
-  //   event.preventDefault();
-  //   // name will be placeholder for id until backend is ready to implement to project
-  //   // console.log(props.name)
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     axios
-  //       .put(
-  //         `https://refugee-stories-backend.herokuapp.com/api/approve/${props.id}`, null, {
-  //           headers: {
-  //             Authorization: token
-  //           }
-  //         }
-  //       )
-  //       // .then()
-  //       .then(res => console.log(res))
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
-  // const onClickDelete = event => {
-  //   event.preventDefault();
-  //   // name will be placeholder for id until backend is ready to implement to project
-  //   // console.log(props.name)
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     axios
-  //       .delete(
-  //         `https://refugee-stories-backend.herokuapp.com/api/story/${props.id}`, {
-  //           headers: {
-  //             Authorization: token
-  //           }
-  //         }
-  //       )
-  //       // .then()
-  //       .then(res => console.log(res))
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
   const clickApprove = event => {
     event.preventDefault();
-    // console.log(props.id)
     props.onClickApprove(props.id);
   }
 
