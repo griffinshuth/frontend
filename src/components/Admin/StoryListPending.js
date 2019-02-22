@@ -99,17 +99,6 @@ export default class StoryListPending extends React.Component {
         }),
         console.log(this.state.allStories)
         )
-    
-        
-        // .then(res => {
-        //   console.log(res)
-        //   this.setState(prevState => {
-        //     const allStories = prevState.allStories.filter(story => 
-        //       story.id !== id
-        //     )
-        //     return {allStories};
-        //   })
-        // })
         .catch(err => {
           console.log(err)
         });
