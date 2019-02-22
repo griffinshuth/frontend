@@ -24,7 +24,7 @@ const MenuBar = () => {
       <NavLink activeClassName="active-page" className="menu-item" to={'/submit'}>
         Submit Your Story
       </NavLink>
-      <NavLink activeClassName="active-page" className="menu-item" to={'/admin'}>
+      <NavLink activeClassName="active-page" className="menu-item" to={'/#/admin'}>
         Admin
       </NavLink>
     </MenuBarCon>

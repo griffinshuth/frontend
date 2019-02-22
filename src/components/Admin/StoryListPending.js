@@ -95,7 +95,7 @@ export default class StoryListPending extends React.Component {
           )
           console.log(allStories)
 
-          return {allStories: allStories};
+          return {allStories};
         }),
         console.log(this.state.allStories)
         )
