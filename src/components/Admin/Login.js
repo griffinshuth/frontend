@@ -59,7 +59,7 @@ export default class Login extends Component {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        window.location = '/admin'
+        this.props.checkLogin();  
       })
       .catch(err => {
         console.log(err);
@@ -91,7 +91,7 @@ export default class Login extends Component {
               value={this.state.passwordInput}
               placeholder="Password"
             />
-            <button onClick={this.onLogin}>Login</button>
+            <button type="submit" onClick={this.onLogin}>Login</button>
           </Form>
           <Link to="/">Go back to Refugee Stories</Link>
         </FormCon>

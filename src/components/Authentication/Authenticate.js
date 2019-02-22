@@ -50,7 +50,7 @@ const Authenticate = Admin => {
           </div>
         );
       } else {
-        return <Login />;
+        return <Login checkLogin={this.checkLogin}/>;
       }
     }
   };

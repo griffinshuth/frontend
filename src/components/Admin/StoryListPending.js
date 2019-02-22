@@ -51,6 +51,30 @@ export default class StoryListPending extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios
+        .get("https://refugee-stories-backend.herokuapp.com/api/story", {
+          headers: {
+            Authorization: token
+          }
+        })    
+        .then(res => {
+          const stories = res.data
+          // Filter stories by approved flag
+          const publicStories = stories.filter(story => story.approved)
+          const pendingStories = stories.filter(story => !story.approved)
+          this.setState({ 
+            allStories: res.data, 
+            public: publicStories,
+            pending: pendingStories
+          });
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
   
 
   onClickApprove = id => {
@@ -91,14 +115,20 @@ export default class StoryListPending extends React.Component {
         .then(this.setState(prevState => {
           console.log(id)
           const allStories = prevState.allStories.filter(story => 
-            story.id !== id
+            story.id !== id 
+
           )
           console.log(allStories)
 
           return {allStories};
         }),
+        this.forceUpdate(),
+
         console.log(this.state.allStories)
         )
+        
+        
+
         .catch(err => {
           console.log(err)
         });
