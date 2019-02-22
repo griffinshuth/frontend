@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
+import React, { Component } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const FormComponent = styled.div`
   padding-top: 100px;
   min-height: 100vh;
-`
+`;
 
 const FormCon = styled.div`
   background-color: rgb(131, 211, 201);
@@ -17,7 +17,7 @@ const FormCon = styled.div`
   padding: 100px 2%;
   width: 100%;
   max-width: 500px;
-`
+`;
 
 const Form = styled.form`
   display: flex;
@@ -25,50 +25,77 @@ const Form = styled.form`
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-`
+`;
 
 const FormTitle = styled.h2`
   text-transform: uppercase;
   color: #ffffff;
   letter-spacing: 2px;
-`
+`;
 
 export default class Login extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      usernameInput: '',
-    }
+      usernameInput: "",
+      passwordInput: "",
+      processing: true
+    };
   }
 
   onInputChange = event => {
-    this.setState({usernameInput: event.target.value})
-  }
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   onLogin = event => {
-    localStorage.setItem('user', this.state.usernameInput);
-    // window.onbeforeunload();
-  }
+    event.preventDefault();
+    console.log(this.state);
 
-  // onLogout = event => {
-  //   event.preventDefault();
-  //   localStorage.clear();
-  // }
+    axios
+      .post("https://refugee-stories-backend.herokuapp.com/api/login", {
+        username: this.state.usernameInput,
+        password: this.state.passwordInput
+      })
+      .then(res => {
+        console.log(res);
+        localStorage.setItem("token", res.data.token);
+        window.location = '/admin'
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-  render(){
+  onLogout = event => {
+    event.preventDefault();
+    localStorage.clear();
+  };
+
+  render() {
     return (
       <FormComponent>
-        <FormCon>
+          <FormCon>
           <FormTitle>Refugee Stories Admin Login</FormTitle>
-            <Form>
-              <input type="text" name="name" placeholder="Name" onChange={this.onInputChange} required/>
-              <input type="password" name="password" placeholder="Password" />
-              <button onClick={this.onLogin}>Login</button>
-            </Form>
-          <Link to='/'>Go back to Refugee Stories</Link>
+          <Form>
+            <input
+              type="text"
+              name="usernameInput"
+              placeholder="Name"
+              onChange={this.onInputChange}
+              required
+            />
+            <input
+              type="password"
+              onChange={this.onInputChange}
+              name="passwordInput"
+              value={this.state.passwordInput}
+              placeholder="Password"
+            />
+            <button onClick={this.onLogin}>Login</button>
+          </Form>
+          <Link to="/">Go back to Refugee Stories</Link>
         </FormCon>
-          
       </FormComponent>
-    )
+    );
   }
 }

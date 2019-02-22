@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 import StoryList from './components/StoryList';
 import AddStoryForm from './components/AddStoryForm';
@@ -9,8 +10,8 @@ import Admin from './components/Admin/Admin';
 
 class App extends Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       refugees: []
     }
@@ -31,22 +32,12 @@ class App extends Component {
 
     axios
       .post('https://refugee-stories-backend.herokuapp.com/api/story', newRefugee)
-      .then(response => {console.log(response)})
+      .then(response => {
+        console.log(response);
+      })
+      // .then(window.location = '/')
       .catch(error => {console.log(error)})
 
-    // this.setState(prevState => {
-
-    //   // create copy of refugees 
-    //   const refugees = Array.from(prevState.refugees); 
-
-    //   // push new refugee to array of refugees
-    //   refugees.push(newRefugee);
-
-    //   // Note to self: return is required when using 
-    //   // the functional version of state since it returns 
-    //   // what you want state to be
-    //   return {refugees};
-    // })
   }
 
   approveStory = (id) => {
@@ -54,14 +45,7 @@ class App extends Component {
       .put(`https://refugee-stories-backend.herokuapp.com/api/approve/${id}`)
       .then(response => console.log(response))
       .catch(error => console.log(error))
-
-
-    // this.setState(prevState => {
-    //   const refugees = Array.from(prevState.refugees);
-    //   const pendingStory = refugees.find(refugee => refugee.id === id);
-    //   pendingStory.approved = true;
-    //   return {refugees}
-    // })
+   
   }
 
   deleteStory = (id) => {
@@ -70,12 +54,6 @@ class App extends Component {
     .then(response => console.log(response))
     .catch(error => console.log(error))
 
-//     this.setState(prevState => {
-      
-//       // const refugees = Array.from(prevState.refugees);
-//       const refugees = prevState.refugees.filter(refugee => refugee.id !== id);
-//       return {refugees}
-// })
   }
 
   render() {
@@ -95,7 +73,7 @@ class App extends Component {
           />
           )}
           />
-        <Route exact path="/admin" render={(props) => (
+        <Route path="/admin" render={(props) => (
           <Admin 
             {...props}
             refugees={this.state.refugees}
@@ -108,5 +86,9 @@ class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  history: PropTypes.object
+};
 
 export default App;
