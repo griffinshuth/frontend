@@ -73,7 +73,7 @@ class App extends Component {
           />
           )}
           />
-        <Route exact path="/#/admin" render={(props) => (
+        <Route path="/#/admin" render={(props) => (
           <Admin 
             {...props}
             refugees={this.state.refugees}
