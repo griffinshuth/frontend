@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
+import './App.css';
 import StoryList from './components/StoryList';
 import AddStoryForm from './components/AddStoryForm';
 import Admin from './components/Admin/Admin';
 
 class App extends Component {
-
   constructor(props){
     super(props);
     this.state = {
@@ -18,7 +17,6 @@ class App extends Component {
   }
 
   componentDidMount(){
-    // this.setState({refugees: dummyData})
     axios
       .get('https://refugee-stories-backend.herokuapp.com/api/stories')
       .then(response => {
@@ -29,15 +27,12 @@ class App extends Component {
   }
 
   addStory = (newRefugee) => {
-
     axios
       .post('https://refugee-stories-backend.herokuapp.com/api/story', newRefugee)
       .then(response => {
         console.log(response);
       })
-      // .then(window.location = '/')
       .catch(error => {console.log(error)})
-
   }
 
   approveStory = (id) => {
@@ -45,7 +40,6 @@ class App extends Component {
       .put(`https://refugee-stories-backend.herokuapp.com/api/approve/${id}`)
       .then(response => console.log(response))
       .catch(error => console.log(error))
-   
   }
 
   deleteStory = (id) => {
@@ -53,7 +47,6 @@ class App extends Component {
     .delete(`https://refugee-stories-backend.herokuapp.com/api/story/${id}`)
     .then(response => console.log(response))
     .catch(error => console.log(error))
-
   }
 
   render() {
@@ -64,15 +57,13 @@ class App extends Component {
             {...props}
             refugees={this.state.refugees}
           />
-          )}
-          />
+        )}/>
         <Route path="/submit" render={(props) => (
           <AddStoryForm
             {...props}
             addStory={this.addStory}
           />
-          )}
-          />
+        )}/>
         <Route path="/admin" render={(props) => (
           <Admin 
             {...props}

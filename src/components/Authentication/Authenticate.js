@@ -41,7 +41,9 @@ const Authenticate = Admin => {
         return (
           <div>
             <Header title="Pending Stories" />
-            <button onClick={this.onLogout}>Log Out</button>
+            <div className="btn-container">
+              <button className="logout-btn" onClick={this.onLogout}>Log Out</button>
+            </div>
             <StoryListPending
               refugees={this.props.refugees}
               approveStory={this.props.approveStory}
@@ -50,7 +52,7 @@ const Authenticate = Admin => {
           </div>
         );
       } else {
-        return <Login />;
+        return <Login checkLogin={this.checkLogin}/>;
       }
     }
   };
