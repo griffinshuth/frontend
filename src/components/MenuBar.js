@@ -13,6 +13,9 @@ const MenuBarCon = styled.div`
 const MenuBar = () => {
   return (
     <MenuBarCon>
+      <a href="https://www.refugee-stories.com/" activeClassName="active-page" className="menu-item" >
+        Home
+      </a>
       <NavLink activeClassName="active-page" className="menu-item" to={'/'}>
         Stories
       </NavLink>
