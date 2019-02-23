@@ -6,7 +6,7 @@ import axios from "axios";
 const FormComponent = styled.div`
   padding-top: 100px;
   min-height: 100vh;
-`;
+`
 
 const FormCon = styled.div`
   background-color: rgb(131, 211, 201);
@@ -17,7 +17,7 @@ const FormCon = styled.div`
   padding: 100px 2%;
   width: 100%;
   max-width: 500px;
-`;
+`
 
 const Form = styled.form`
   display: flex;
@@ -25,13 +25,20 @@ const Form = styled.form`
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-`;
+`
 
 const FormTitle = styled.h2`
   text-transform: uppercase;
   color: #ffffff;
   letter-spacing: 2px;
-`;
+`
+
+const Input = styled.input`
+  margin-bottom: 10px;
+  font-size: 1rem;
+  border: none;
+  padding: 5px;
+`
 
 export default class Login extends Component {
   constructor(props) {
@@ -59,6 +66,8 @@ export default class Login extends Component {
       .then(res => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
+        // checkLogin will check state to confirm whether or not a 
+        // user is logged in if state is true, the admin page will render
         this.props.checkLogin();  
       })
       .catch(err => {
@@ -77,14 +86,14 @@ export default class Login extends Component {
           <FormCon>
           <FormTitle>Refugee Stories Admin Login</FormTitle>
           <Form>
-            <input
+            <Input
               type="text"
               name="usernameInput"
               placeholder="Name"
               onChange={this.onInputChange}
               required
             />
-            <input
+            <Input
               type="password"
               onChange={this.onInputChange}
               name="passwordInput"
@@ -93,7 +102,7 @@ export default class Login extends Component {
             />
             <button type="submit" onClick={this.onLogin}>Login</button>
           </Form>
-          <Link to="/">Go back to Refugee Stories</Link>
+          <Link className="link-home" to="/">Go back to Refugee Stories</Link>
         </FormCon>
       </FormComponent>
     );

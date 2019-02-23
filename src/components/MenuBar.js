@@ -9,11 +9,6 @@ const MenuBarCon = styled.div`
   color: #ffffff;
   text-transform: uppercase;
 `
-// const MenuItem = styled.a`
-//   padding-left: 30px;
-//   text-decoration: none;
-//   color: #ffffff;
-// `
 
 const MenuBar = () => {
   return (

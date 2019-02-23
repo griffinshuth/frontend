@@ -7,9 +7,9 @@ import headerImg from '../images/header.jpg';
 const HeaderCon = styled.header`
   background: url(${headerImg}) bottom center no-repeat;
   background-size: 100%;
-  min-height: 500px;
+  min-height: 550px;
   @media (max-width: 800px){
-    min-height: 400px;
+    min-height: 450px;
     background-size: cover;
   }
 `
@@ -19,7 +19,7 @@ const HeaderTitle = styled.div`
   max-width: 400px;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 150px 20px;
+  padding: 130px 20px;
   background: rgba(0,0,0,0.3);
   color: #ffffff;
   font-weight: bold;
@@ -32,18 +32,29 @@ const HeaderTitle = styled.div`
     margin-top: 20px;
   }
   @media (max-width: 500px){
-
     padding: 50px 20px;
   }
 `
 
+const HeaderLine = styled.span`
+  width: 70%;
+  height: 2px;
+  margin: 2px auto;
+  background: #ffffff;
+`
+
 class Header extends Component {
-  
   render() {
     return (
       <HeaderCon>
         <MenuBar />
-        <HeaderTitle>{this.props.title}</HeaderTitle>
+        <HeaderTitle>
+          <HeaderLine />
+          <HeaderLine />
+          <span>{this.props.title}</span>
+          <HeaderLine />
+          <HeaderLine />
+        </HeaderTitle>
       </HeaderCon>
     );
   }

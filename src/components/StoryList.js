@@ -14,7 +14,6 @@ const StoryListCon = styled.div`
 `
 
 export default class StoryList extends React.Component {
- 
   render(){
     const refugees = this.props.refugees.filter(refugee => refugee.approved)
     return (
@@ -31,12 +30,10 @@ export default class StoryList extends React.Component {
                 content={refugee.content}
                 image={refugee.image} 
               />
-            )
-          )
+            ))
           }          
         </StoryListCon>
       </div>
-      
     )
   }
 }

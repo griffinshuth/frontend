@@ -8,10 +8,19 @@ const PendingCardCon = styled.div`
   margin: 20px auto;
   text-align: left;
   color: rgb(124, 128, 129);
+  display: flex;
+  @media (max-width: 800px){
+    flex-direction: column;
+    text-align: center;
+  }
 `;
 
 const ImgCon = styled.div`
-  max-width: 20%;
+  max-width: 30%;
+  @media (max-width: 800px){
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
 `;
 
 const Img = styled.img`
@@ -38,15 +47,37 @@ const Story = styled.div`
 const PendingContent = styled.div`
   display: flex;
   width: 100%;
+  @media (max-width: 800px){
+    flex-direction: column;
+  }
 `;
 
 const PendingText = styled.div`
   padding-left: 2%;
+  @media (max-width: 800px){
+    padding-left: 0;
+  }
+
 `;
+
 const ApprovalButtonsCon = styled.div`
   display: flex;
   justify-content: flex-end;
+  @media (max-width: 800px){
+    justify-content: center;
+  }
 `;
+
+const Separator = styled.div`
+  width: 90%;
+  height: 1px;
+  background: rgba(0,0,0,.1);
+  margin: 50px auto 0;
+  display: none;
+  @media (max-width: 800px) {
+    display: block;
+  }
+`
 
 const StoryCardPending = props => {
 
@@ -74,10 +105,10 @@ const StoryCardPending = props => {
         </PendingText>
       </PendingContent>
       <ApprovalButtonsCon>
-        {!props.approved ? (<button onClick={clickApprove}>Approve</button>) : null}
-        
-        <button onClick={clickDelete}>Delete</button>
+        {!props.approved ? (<button className="admin-btn" onClick={clickApprove}>Approve</button>) : null}
+        <button className="admin-btn" onClick={clickDelete}>Delete</button>
       </ApprovalButtonsCon>
+      <Separator />
     </PendingCardCon>
   );
 };
