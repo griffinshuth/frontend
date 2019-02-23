@@ -64,8 +64,13 @@ button:hover {
   color: #ffffff;
   letter-spacing: 2px;
   font-size: 1.2rem;
-  text-decoration: none;
+  text-decoration: underline;
   margin-top: 20px;
+  transition: all .3s ease-out;
+}
+
+.link-home:hover {
+  color: rgb(124,128,129);
 }
 
 .admin-btn {

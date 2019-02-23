@@ -56,7 +56,7 @@ export default class Login extends Component {
 
   onLogin = event => {
     event.preventDefault();
-    console.log(this.state);
+    event.stopPropagation();
 
     axios
       .post("https://refugee-stories-backend.herokuapp.com/api/login", {
@@ -92,6 +92,7 @@ export default class Login extends Component {
               placeholder="Name"
               onChange={this.onInputChange}
               required
+              autoComplete="off"
             />
             <Input
               type="password"
@@ -99,6 +100,8 @@ export default class Login extends Component {
               name="passwordInput"
               value={this.state.passwordInput}
               placeholder="Password"
+              required
+              autoComplete="off"
             />
             <button type="submit" onClick={this.onLogin}>Login</button>
           </Form>
