@@ -55,6 +55,10 @@ export default class Login extends Component {
   };
 
   onLogin = event => {
+    // These two methods will prevent default actions, 
+    // including placing name and password inputs into the url.
+    // This is usually achieved by using 'return false' in the form,
+    // but 'return false' does not work in React.
     event.preventDefault();
     event.stopPropagation();
 
